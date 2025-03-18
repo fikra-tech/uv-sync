@@ -19,12 +19,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: change directory
-        run: cd test
       - name: install dependencies
         uses: ./
         with:
           python-version: ${{ matrix.python-version }}
           extra-args: '--directory test'
       - name: run script
-        run: uv run main.py
+        run: |
+          cd test
+          uv run main.py
