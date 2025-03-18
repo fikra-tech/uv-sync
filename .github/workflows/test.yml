@@ -27,3 +27,4 @@ jobs:
             python-version: ${{ matrix.python-version }}
       - name: run script
         run: uv run main.py
+        shell: bash
