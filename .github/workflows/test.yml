@@ -44,4 +44,3 @@ jobs:
         run: |
           cd test
           uv run main.py
-          uv run -v
