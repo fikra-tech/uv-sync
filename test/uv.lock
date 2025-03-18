@@ -1,0 +1,23 @@
+version = 1
+revision = 1
+requires-python = ">=3.10"
+
+[[package]]
+name = "pyxo"
+version = "1.2.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c0/ab/69f2b87c8fb430476766975f967f4616b7fd3005aae4b6db42f420898c36/pyxo-1.2.2.tar.gz", hash = "sha256:bc84d4b4a91acfa6f02565cac4097115eb1af24b01e8d99f2609842b8483f157", size = 6553 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/16/74b10204a572a1b901c26383d0ea2afb2210bd477be7bd7fd10a1c11e0f2/pyxo-1.2.2-py3-none-any.whl", hash = "sha256:3147bdc4880ef0e17fbd945403a458b723c14c367de9e4a84ccef537ad4c8f81", size = 9720 },
+]
+
+[[package]]
+name = "test"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pyxo" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pyxo", specifier = ">=1.2.2" }]

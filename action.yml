@@ -1,0 +1,45 @@
+name: 'Install dependencies with uv'
+description: 'Install dependencies using uv'
+author: '@ouhammmourachid'
+branding:
+  icon: 'truck'
+  color: 'blue'
+
+inputs:
+  python-version:
+    description: 'The version of Python to use.'
+    required: true
+    default: ''
+  uv-version:
+    description: 'The version of uv to use.'
+    required: true
+    default: 'latest'
+  extra-args:
+    description: 'Extra arguments to pass to the `uv sync` command.'
+    required: false
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+    # Step 1: Set up uv
+    - name: Set up uv if Python version is provided
+      if: ${{ inputs.python-version != '' }}
+      uses: astral-sh/setup-uv@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+        version: ${{ inputs.uv-version }}
+        enable-cache: true
+    - name: set up uv if Python version is not provided
+      if: ${{ inputs.python-version == '' }}
+      uses: astral-sh/setup-uv@v5
+      with:
+        version: ${{ inputs.uv-version }}
+        enable-cache:
+    - name: Install python if Python version is provided
+      if: ${{ inputs.python-version == '' }} 
+      run: uv python install
+      shell: bash
+    # Step 2: Install dependencies
+    - name: Install dependencies
+      run: uv sync ${{ inputs.extra-args }}
+      shell: bash
