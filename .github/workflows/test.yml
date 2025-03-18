@@ -28,3 +28,20 @@ jobs:
         run: |
           cd test
           uv run main.py
+  test-without-python:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: install dependencies
+        uses: ./
+        with:
+          extra-args: '--directory test'
+      - name: run script
+        run: |
+          cd test
+          uv run main.py
+          uv run -v

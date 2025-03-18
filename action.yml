@@ -38,6 +38,7 @@ runs:
     - name: Install python if Python version is provided
       if: ${{ inputs.python-version == '' }} 
       run: uv python install
+      shell: bash
     # Step 2: Install dependencies
     - name: Install dependencies
       run: uv sync ${{ inputs.extra-args }}
