@@ -23,8 +23,8 @@ jobs:
         run: cd test
       - name: install dependencies
         uses: .
-          with:
-            python-version: ${{ matrix.python-version }}
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: run script
         run: uv run main.py
         shell: bash
