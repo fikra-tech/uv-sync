@@ -27,8 +27,7 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
         version: ${{ inputs.uv-version }}
+        uv-cache: true
     - name: Install dependencies
-      run: |
-        ls -all
-        uv sync ${{ inputs.extra-args }}
+      run: uv sync ${{ inputs.extra-args }}
       shell: bash
