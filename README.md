@@ -12,7 +12,7 @@ The `fikra-tech/uv-sync` GitHub Action allows you to easily install and manage d
 
 - `python-version`: The version of Python to be used. Default is `3.x`.
 - `uv-version`: The version of the `uv` package manager to be installed. Default is the latest version.
-- `additional-args`: Additional arguments to be passed to the `uv sync` command. Default is an empty string.
+- `extra-args` : Additional arguments to be passed to the `uv sync` command. Default is an empty string.
 
 ## Usage
 
@@ -31,13 +31,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Install uv-sync
-      uses: fikra-tech/uv-sync@v1
+      uses: fikra-tech/uv-sync@v2
       with:
         python-version: '3.11'
         uv-version: 'latest'
-        additional-args: ''
-        working-directory: '.'
-
+        
     - name: Run a script
       run: uv run main.py
 ```
